@@ -8,27 +8,44 @@ func isPrime(number int) bool {
 	element := 1
 	count := 0
 
-	for element <= number {
-
-		if number%element == 0 {
-			count += 1
-		}
-
-		if count > 2 {
-			return false
-		}
-
-		element += 1
+	if number%2 == 0 {
+		return false
 	}
 
+	if number%2 == 1 {
+		for element <= number {
+			if number%element == 0 {
+				count += 1
+			}
+			if count > 2 {
+				return false
+			}
+			element += 2
+		}
+	}
 	return true
+
+	// for element <= number {
+
+	// 	if number%element == 0 {
+	// 		count += 1
+	// 	}
+
+	// 	if count > 2 {
+	// 		return false
+	// 	}
+
+	// 	element += 1
+	// }
+
+	// return true
 }
 
 func countPrimes(number int) int {
 
 	count := 0
 
-	for index := 2; index < number; index++ {
+	for index := 1; index < number; index++ {
 		if isPrime(index) {
 			count += 1
 		}
@@ -38,7 +55,7 @@ func countPrimes(number int) int {
 
 func main() {
 
-	testNumber := 100_000
+	testNumber := 100_00
 	start := time.Now()
 
 	// for index := 1; index <= testNumber; index++ {
