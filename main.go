@@ -28,7 +28,7 @@ func countPrimes(number int) int {
 
 	count := 0
 
-	for index := 1; index <= number; index++ {
+	for index := 2; index < number; index++ {
 		if isPrime(index) {
 			count += 1
 		}
