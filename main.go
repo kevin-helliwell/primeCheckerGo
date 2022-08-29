@@ -55,15 +55,14 @@ func countPrimes(number int) int {
 
 func main() {
 
-	testNumber := 100_00
+	testNumber := 200_000
+	
 	start := time.Now()
-
-	// for index := 1; index <= testNumber; index++ {
-	// 	fmt.Println(index, isPrime(index))
-	// }
-
-	fmt.Println(countPrimes(testNumber))
-
+	
+	numPrimes := countPrimes(testNumber)
+	
 	elapsed := time.Since(start)
-	fmt.Println(elapsed)
+	
+	fmt.Println("Completed in", elapsed)
+	fmt.Println("There are", numPrimes, "primes up to", testNumber)
 }
