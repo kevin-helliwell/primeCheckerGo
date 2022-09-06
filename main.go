@@ -1,23 +1,34 @@
 package main
 
-import "fmt"
-import "time"
+import (
+	"fmt"
+	"time"
+)
+
+func isEven(number int) bool {
+	return number%2 == 0
+}
+
+func isOdd(number int) bool {
+	return number%2 != 0
+
+}
 
 func isPrime(number int) bool {
 
-	element := 1
+	element := 3
 	count := 0
 
-	if number%2 == 0 {
+	if isEven(number) {
 		return false
 	}
 
-	if number%2 == 1 {
+	if isOdd(number) {
 		for element <= number {
 			if number%element == 0 {
 				count += 1
 			}
-			if count > 2 {
+			if count > 1 {
 				return false
 			}
 			element += 2
@@ -25,20 +36,6 @@ func isPrime(number int) bool {
 	}
 	return true
 
-	// for element <= number {
-
-	// 	if number%element == 0 {
-	// 		count += 1
-	// 	}
-
-	// 	if count > 2 {
-	// 		return false
-	// 	}
-
-	// 	element += 1
-	// }
-
-	// return true
 }
 
 func countPrimes(number int) int {
@@ -55,14 +52,14 @@ func countPrimes(number int) int {
 
 func main() {
 
-	testNumber := 200_000
-	
+	testNumber := 100_000
+
 	start := time.Now()
-	
+
 	numPrimes := countPrimes(testNumber)
-	
+
 	elapsed := time.Since(start)
-	
+
 	fmt.Println("Completed in", elapsed)
 	fmt.Println("There are", numPrimes, "primes up to", testNumber)
 }
