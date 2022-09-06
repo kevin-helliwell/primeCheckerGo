@@ -52,7 +52,7 @@ func countPrimes(number int) int {
 
 func main() {
 
-	testNumber := 100_000
+	testNumber := 10_000
 
 	start := time.Now()
 
