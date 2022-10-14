@@ -54,6 +54,8 @@ func main() {
 
 	testNumbers := []int{10_000, 25_000, 50_000, 75_000, 100_000, 125_000, 150_000, 175_000, 200_000}
 
+	var totalTime time.Duration = 0
+
 	for index := 0; index < len(testNumbers); index++ {
 
 		testNumber := testNumbers[index]
@@ -62,8 +64,10 @@ func main() {
 		numPrimes := countPrimes(testNumber)
 
 		elapsed := time.Since(start)
+		totalTime += elapsed
 
-		fmt.Println("Completed in", elapsed)
-		fmt.Println("There are", numPrimes, "primes up to", testNumber)
+		fmt.Println("There are", numPrimes, "primes up to", testNumber, "- Completed in", elapsed)
+
 	}
+	fmt.Println("Total time - Completed in", totalTime)
 }
