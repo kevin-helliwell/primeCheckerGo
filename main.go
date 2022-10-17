@@ -5,9 +5,15 @@ import (
 	"time"
 )
 
+// Checks if the number given is divisible by 2
+// If the number is divisble by 2, the number cannot be prime
+
 func isEven(number int) bool {
 	return number%2 == 0
 }
+
+// Checks if the number given is not divisible by 2
+// If the number is not divisble by 2, it is odd and either composite (not prime) or prime
 
 func isOdd(number int) bool {
 	return number%2 != 0
@@ -16,33 +22,42 @@ func isOdd(number int) bool {
 
 func isPrime(number int) bool {
 
+	// Used to check for divisible factors of our given number
+	// Starts at 3 since we're only checking odd numbers
 	element := 3
+
+	// Increments when a divisible factor of our given number is found
 	count := 0
 
+	// Guard clause (prime numbers cannot be even)
 	if isEven(number) {
 		return false
 	}
 
+	// If our given number is not even, it must be odd
 	if isOdd(number) {
 		for element <= number {
 			if number%element == 0 {
-				count += 1
+				count += 1 // Increments when a divisble factor of our number is found
 			}
 			if count > 1 {
-				return false
+				return false // Short-circuits the loop (prime numbers only have one divisble factor other than 1)
 			}
-			element += 2
+			element += 2 // All odd numbers are two positions away from each other
 		}
 	}
-	return true
+	return true // If the loop concludes, the given number must be prime
 
 }
+
+// Counts primes based on above function up to a given number
+// Iterates only through odd numbers since even numbers cannot be prime
 
 func countPrimes(number int) int {
 
 	count := 0
 
-	for index := 1; index < number; index++ {
+	for index := 1; index <= number; index = index + 2 {
 		if isPrime(index) {
 			count += 1
 		}
@@ -51,6 +66,8 @@ func countPrimes(number int) int {
 }
 
 func main() {
+
+	// Iterates through an array of increasingly large numbers and times the execution for testing purposes
 
 	testNumbers := []int{10_000, 25_000, 50_000, 75_000, 100_000, 125_000, 150_000, 175_000, 200_000}
 
