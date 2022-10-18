@@ -6,14 +6,14 @@ import (
 )
 
 // Checks if the number given is divisible by 2
-// If the number is divisble by 2, the number cannot be prime
+// If the number is divisible by 2, the number cannot be prime
 
 func isEven(number int) bool {
 	return number%2 == 0
 }
 
 // Checks if the number given is not divisible by 2
-// If the number is not divisble by 2, it is odd and either composite (not prime) or prime
+// If the number is not divisible by 2, it is odd and either composite (not prime) or prime
 
 func isOdd(number int) bool {
 	return number%2 != 0
@@ -38,10 +38,10 @@ func isPrime(number int) bool {
 	if isOdd(number) {
 		for element <= number {
 			if number%element == 0 {
-				count += 1 // Increments when a divisble factor of our number is found
+				count += 1 // Increments when a divisible factor of our number is found
 			}
 			if count > 1 {
-				return false // Short-circuits the loop (prime numbers only have one divisble factor other than 1)
+				return false // Short-circuits the loop (prime numbers only have one divisible factor other than 1)
 			}
 			element += 2 // All odd numbers are two positions away from each other
 		}
